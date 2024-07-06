@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Kółko i krzyżyk</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Kółko i krzyżyk</h1>
+        <div class="boardgame" id="boardgame">
+            <div class="cell" cellIndex="0" id="0"></div>
+            <div class="cell" cellIndex="1" id="1"></div>
+            <div class="cell" cellIndex="2" id="2"></div>
+            <div class="cell" cellIndex="3" id="3"></div>
+            <div class="cell" cellIndex="4" id="4"></div>
+            <div class="cell" cellIndex="5" id="5"></div>
+            <div class="cell" cellIndex="6" id="6"></div>
+            <div class="cell" cellIndex="7" id="7"></div>
+            <div class="cell" cellIndex="8" id="8"></div>
+        </div>
+        <h3 id="playersTurn"></h3>
+        <div class="playersPoints">
+            <div>Gracz X: <span id="playerXPoints"></span></div>
+            <div>Gracz O: <span id="playerOPoints"></span></div>
+        </div>
+        <div class="displayNone" id="modal">
+            <h2 id="winText"></h2>
+            <button class="newGameBtn" id="newGame">Nowa gra</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
