@@ -52,6 +52,10 @@ h3 {
     cursor: pointer;
 }
 
+.cell:hover {
+    opacity: 80%;
+}
+
 .winCell {
     background: #f9a639;
 }
