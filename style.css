@@ -76,15 +76,24 @@ h3 {
 
 .newGameBtn {
     font-size: 20px;
+    padding: 12px 20px;    
+}
+
+.changePlayersTurn {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-top: -20px;
+}
+
+.btn {
     color: #fff;;
-    background: #2f3487;
-    padding: 12px 20px;
+    background: #2f3487;    
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
-.newGameBtn:hover {
+.btn:hover {
     transform: scale(1.1);
 }
 
@@ -92,5 +101,4 @@ h3 {
     display: flex;
     flex-direction: column;
     font-size: 20px;
-
 }

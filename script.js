@@ -12,12 +12,13 @@ const winningVariants = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-]
+];
 
 const cells = document.querySelectorAll('.cell');
 const playersTurn = document.getElementById('playersTurn');
 const winner = document.getElementById('winText');
 const newGame = document.getElementById('newGame');
+const changePlayersTurn = document.getElementById('changePlayersTurn');
 const modal = document.getElementById('modal');
 const playerXPoints = document.getElementById('playerXPoints');
 const playerOPoints = document.getElementById('playerOPoints');
@@ -30,6 +31,7 @@ const startGame = () => {
         cell.addEventListener('click', drawSymbol, {once: true})
     });
     newGame.addEventListener('click', restartGame);
+    changePlayersTurn.addEventListener('click', changePlayer);
     playersTurn.textContent = `Runda gracza ${currentPlayer}`;   
     activeGame = true;    
 }
@@ -37,6 +39,7 @@ const startGame = () => {
 const drawSymbol = (event) => {
     event.target.innerHTML = currentPlayer;
     movementsArray[event.target.id] = currentPlayer;
+    changePlayersTurn.removeEventListener('click', changePlayer);
     checkWinner();    
 }
 
