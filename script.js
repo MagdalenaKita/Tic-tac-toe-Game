@@ -3,6 +3,7 @@ const playerO = 'O';
 let activeGame = false;
 let currentPlayer = playerX;
 let movementsArray = ['', '', '', '', '', '', '', '', ''];
+let tableLastSixMoves = [];
 const winningVariants = [
     [0, 1, 2],
     [3, 4, 5],
@@ -28,7 +29,8 @@ playerOPoints.textContent = 0;
 
 const startGame = () => {
     cells.forEach(cell => {
-        cell.addEventListener('click', drawSymbol, {once: true})
+        // cell.addEventListener('click', drawSymbol, {once: true});  
+        cell.addEventListener('click', drawSymbol);          
     });
     newGame.addEventListener('click', restartGame);
     changePlayersTurn.addEventListener('click', changePlayer);
@@ -37,10 +39,14 @@ const startGame = () => {
 }
 
 const drawSymbol = (event) => {
-    event.target.innerHTML = currentPlayer;
-    movementsArray[event.target.id] = currentPlayer;
-    changePlayersTurn.removeEventListener('click', changePlayer);
-    checkWinner();    
+    if(cells[event.target.id].textContent === '') {
+        event.target.innerHTML = currentPlayer;    
+        movementsArray[event.target.id] = currentPlayer;    
+        changePlayersTurn.removeEventListener('click', changePlayer);
+        changePlayersTurn.setAttribute('disabled', true);
+        checkWinner();
+        addIndexMove(event);
+    }    
 }
 
 const changePlayer = () => {
@@ -94,7 +100,25 @@ const checkWinner = () => {
     if(!activeGame) {
         modal.classList.remove('displayNone');
         modal.classList.add('modal');
+        tableLastSixMoves = [];
     }
+}
+
+const addIndexMove = (event) => {
+    tableLastSixMoves.push(event.target.id);
+    removeFirstMove();
+}
+
+const removeFirstMove = () => {
+    if(tableLastSixMoves.length == 6) {
+        cells.forEach(cell => {
+            if(cell.id == tableLastSixMoves[0]) {
+                cell.textContent = '';
+                movementsArray[tableLastSixMoves[0]] = '';
+            }
+        })
+        tableLastSixMoves.shift();
+    }    
 }
 
 const restartGame = () => {
